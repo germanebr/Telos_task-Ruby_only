@@ -81,6 +81,7 @@ module Tools
       else
         person.login = false
         puts "Incorrect password... try again\n"
+      end
     end
   end
 
