@@ -160,6 +160,7 @@ class Seller
   def add_income(price)
     @earnings += price
   end
+end
 
 =begin
   Class for the client account
@@ -230,6 +231,7 @@ class Client
       puts "Please login the client first\n"
     end
   end
+end
 
 =begin
   Class for books
