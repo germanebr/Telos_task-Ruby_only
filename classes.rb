@@ -23,28 +23,28 @@ class Store
     @sellers = Array.new
     @clients = Array.new
     @revenue = 0
-    puts "Store created!"
+    puts "Store created!\n"
   end
 
   #Add a seller to the store
   def store_seller(seller)
     if @sellers.include? seller
-      puts "Account already registered. Please log in"
+      puts "Account already registered. Please log in\n"
     else
       position = @sellers.length()
       @sellers[position] = seller
-      puts "#{seller.name} registered as seller..."
+      puts "#{seller.name} registered as seller...\n"
     end
   end
 
   #Add a client to the store
   def add_client(client)
     if @clients.include? client
-      puts "Account already registered. Please log in"
+      puts "Account already registered. Please log in\n"
     else
       position = @client.length()
       @clients[position] = client
-      puts "#{client.name} registered as client..."
+      puts "#{client.name} registered as client...\n"
     end
   end
 
@@ -52,7 +52,7 @@ class Store
   def add_book(book)
     position = @books.length()
     @books[position] = book
-    puts "#{book.title} added..."
+    puts "#{book.title} added...\n"
   end
 
   #Sell a book
@@ -60,7 +60,7 @@ class Store
     book.sold = true
     @revenue += 1
     give_income(book.seller, book.price)
-    puts "#{book.title} of #{book.seller} is sold"
+    puts "#{book.title} of #{book.seller} is sold\n"
   end
 
   #Gives the income to the seller
@@ -85,11 +85,11 @@ class Store
         if show_all
           puts "#{book.title}, #{book.author}: $#{book.price}.00"
           puts "#{book.description}"
-          puts "Seller: #{book.seller}"
+          puts "Seller: #{book.seller}\n"
         elsif title == book.title
           puts "#{book.title}, #{book.author}: $#{book.price}.00"
           puts "#{book.description}"
-          puts "Seller: #{book.seller}"
+          puts "Seller: #{book.seller}\n"
         end
       end
     end
@@ -126,7 +126,7 @@ class Seller
       new_book = Book.new(title,author,description,price, @name)
       store.add_book(new_book)
     else
-      puts "Please login the seller first"
+      puts "Please login the seller first\n"
     end
   end
 
@@ -139,20 +139,20 @@ class Seller
         sold = book.is_sold
 
         if sold and book.seller == @name
-          puts "Author: #{book.author}, Title: #{book.title}, Price: #{book.price}"
+          puts "Author: #{book.author}, Title: #{book.title}, Price: #{book.price}\n"
         end
       end
     else
-      puts "Please login the seller first"
+      puts "Please login the seller first\n"
     end
   end
 
   #Outputs the total income of the seller
   def income()
     if @login
-      puts "Your total income is of $#{@earnings}.00"
+      puts "Your total income is of $#{@earnings}\n"
     else
-      puts "Please login the seller first"
+      puts "Please login the seller first\n"
     end
   end
 
@@ -160,30 +160,6 @@ class Seller
   def add_income(price)
     @earnings += price
   end
-
-  #Logs in the seller
-  def login(password)
-    if !@login
-      puts "Please insert your password:"
-      if @password == password
-        @login = true
-      else
-        @login = false
-        puts "Incorrect password... try again"
-      end
-    else
-      puts "You\'re already logged in"
-    end
-  end
-
-  #Logs out of the system
-  def logout()
-    if @login
-      @login = false
-    end
-    puts "Logged out successfully"
-  end
-end
 
 =begin
   Class for the client account
@@ -209,7 +185,7 @@ class Client
     @funds = 50
     @cart = Array.new
     @login = true
-    puts "#Thanks for registering #{@name}!\nHere\'s $50 for you to start purchasing :D"
+    puts "#Thanks for registering #{@name}!\nHere\'s $50 for you to start purchasing :D\n"
   end
 
   #Add a book to the shopping cart
@@ -217,9 +193,9 @@ class Client
     if @login
       position = @cart.length()
       @cart[position] = book
-      puts "#{book.title} added to the shopping cart..."
+      puts "#{book.title} added to the shopping cart...\n"
     else
-      puts "Please login the client first"
+      puts "Please login the client first\n"
     end
   end
 
@@ -228,7 +204,7 @@ class Client
     if @login
       store.browse_books(title)
     else
-      puts "Please login the client first"
+      puts "Please login the client first\n"
     end
   end
 
@@ -248,36 +224,12 @@ class Client
         funds -= total
         cart = Array.new
       else
-        puts "Insufficient funds..."
+        puts "Insufficient funds...\n"
       end
     else
-      puts "Please login the client first"
+      puts "Please login the client first\n"
     end
   end
-
-  #Logs in the client
-  def login(password)
-    if !@login
-      puts "Please insert your password:"
-      if @password == password
-        @login = true
-      else
-        @login = false
-        puts "Incorrect password... try again"
-      end
-    else
-      puts "You\'re already logged in"
-    end
-  end
-
-  #Logs out of the system
-  def logout()
-    if @login
-      @login = false
-    end
-    puts "Logged out successfully"
-  end
-end
 
 =begin
   Class for books
@@ -292,7 +244,7 @@ end
 class Book
   attr_accessor :title, :author, :desc, :price, :seller, :sold
 
-  def initialize(title,author,desc,price,seller,sold)
+  def initialize(title,author,desc,price,seller)
     @title = title
     @author = author
     @desc = desc
