@@ -200,15 +200,6 @@ class Client
     end
   end
 
-  #Browse the store books
-  def browse_books(store,title)
-    if @login
-      store.browse_books(title)
-    else
-      puts "Please login the client first\n"
-    end
-  end
-
   #Buy the books of the shopping cart
   def buy_books(store)
     total = 0
@@ -222,8 +213,9 @@ class Client
           store.sell_book(book)
         end
 
-        funds -= total
-        cart = Array.new
+        @funds -= total
+        @cart = Array.new
+        puts "You have $#{funds} left"
       else
         puts "Insufficient funds...\n"
       end
