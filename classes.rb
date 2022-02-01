@@ -83,12 +83,12 @@ class Store
     for book in @books
       if !book.sold
         if show_all
-          puts "#{book.title}, #{book.author}: $#{book.price}.00"
-          puts "#{book.description}"
+          puts "\n#{book.title}, #{book.author}: $#{book.price}"
+          puts "#{book.desc}"
           puts "Seller: #{book.seller}\n"
         elsif title == book.title
-          puts "#{book.title}, #{book.author}: $#{book.price}.00"
-          puts "#{book.description}"
+          puts "\n#{book.title}, #{book.author}: $#{book.price}"
+          puts "#{book.desc}"
           puts "Seller: #{book.seller}\n"
         end
       end
