@@ -42,7 +42,7 @@ class Store
     if @clients.include? client
       puts "Account already registered. Please log in\n"
     else
-      position = @client.length()
+      position = @clients.length()
       @clients[position] = client
       puts "#{client.name} registered as client...\n"
     end
