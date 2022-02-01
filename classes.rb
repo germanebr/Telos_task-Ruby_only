@@ -191,8 +191,12 @@ class Client
 
   #Increment funds
   def add_money(quantity)
-    @funds += quantity
-    puts "\n$#{quantity} added succesfully.\nYour total balance is $#{@funds}"
+    if @login
+      @funds += quantity
+      puts "\n$#{quantity} added succesfully.\nYour total balance is $#{@funds}"
+    else
+      puts "Please login the client first\n"
+    end
   end
 
   #Add a book to the shopping cart
