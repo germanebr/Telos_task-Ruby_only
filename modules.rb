@@ -18,7 +18,12 @@ module Tools
     end
     puts "\nShowing books"
     for book in store.books
-      puts "#{book.title} selled by #{book.seller}. Sold: #{book.sold.to_s}"
+      if book.sold
+        sold = "True"
+      else
+        sold = "False"
+      end
+      puts "#{book.title} selled by #{book.seller}. Sold: #{sold}"
     end
     puts "\nTotal income = $#{store.revenue.to_s}"
   end
@@ -67,6 +72,33 @@ module Tools
     price = gets.chomp().to_f
 
     seller.add_book(store,title,author,desc,price)
+  end
+
+  #Browse books from the store
+  def browse_books(store)
+    puts "Do you have a particular book in mind? Y/N:"
+    particular_book = gets.chomp().upcase()
+
+    if particular_book == "Y"
+      puts "Please write the title of the book you\'re looking for:"
+      title = gets.chomp()
+    else
+      title = ''
+    end
+
+    store.browse_books(title)
+  end
+
+  #Get a book
+  def get_book(store)
+    puts "\nWrite the title of the book you want..."
+    title = gets.chomp()
+
+    for book in store.books
+      if title == book.title
+        return book
+      end
+    end
   end
 
   #Log in a seller or customer
