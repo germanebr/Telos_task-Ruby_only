@@ -103,7 +103,7 @@ module Tools
 
   #Add money to the client's account
   def add_money(client)
-    puts "Insert how much you want to register:"
+    puts "\nInsert how much you want to register:"
     quantity = gets.chomp().to_f
     client.add_money(quantity)
   end
