@@ -101,6 +101,13 @@ module Tools
     end
   end
 
+  #Add money to the client's account
+  def add_money(client)
+    puts "Insert how much you want to register:"
+    quantity = gets.chomp().to_f
+    client.add_money(quantity)
+  end
+
   #Log in a seller or customer
   def log_in(person)
     if person.login
