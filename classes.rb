@@ -59,7 +59,7 @@ class Store
   def sell_book(book)
     book.sold = true
     @revenue += 1
-    give_income(book.seller, book.price)
+    give_income(book.seller, book.price-1)
     puts "#{book.title} of #{book.seller} is sold\n"
   end
 
@@ -187,6 +187,12 @@ class Client
     @cart = Array.new
     @login = true
     puts "#Thanks for registering #{@name}!\nHere\'s $50 for you to start purchasing :D\n"
+  end
+
+  #Increment funds
+  def add_money(quantity)
+    @funds += quantity
+    puts "\n$#{quantity} added succesfully.\nYour total balance is $#{@funds}"
   end
 
   #Add a book to the shopping cart
